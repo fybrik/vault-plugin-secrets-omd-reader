@@ -13,6 +13,9 @@ import (
 	omsecrets "fybrik.io/vault-plugin-secrets-omd-reader/pkg/omsecrets"
 )
 
+const ErrorParseArguments = 1
+const ErrorServerPlugin = 2
+
 func main() {
 	// Boilerplate code to get started.
 	// Please see https://www.hashicorp.com/blog/building-a-vault-secure-plugin for more info.
@@ -23,7 +26,7 @@ func main() {
 		logger := hclog.New(&hclog.LoggerOptions{})
 
 		logger.Error("Error in flags.Parse", err)
-		os.Exit(1)
+		os.Exit(ErrorParseArguments)
 	}
 
 	tlsConfig := apiClientMeta.GetTLSConfig()
@@ -37,6 +40,6 @@ func main() {
 		logger := hclog.New(&hclog.LoggerOptions{})
 
 		logger.Error("plugin shutting down", "error", err)
-		os.Exit(1)
+		os.Exit(ErrorServerPlugin)
 	}
 }
