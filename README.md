@@ -4,12 +4,12 @@ Plugin for HashiCorp Vault which reads credential secrets from OpenMetadata
 Requirements:
 
     make
-    golang 1.18 and above
-    Vault CLI utility
+    golang 1.17 and above
+    Vault CLI utility (tested on Vault version v1.11.3)
 
 ## Quick Start
 
-Begin by setting the `OM_SERVER_URL` environment variable to point to the OpenMetadata URL. For instance:
+Begin by setting the `OM_SERVER_URL` environment variable to point to the OpenMetadata Rest API URL. For instance:
 ```
 export OM_SERVER_URL="http://localhost:8585/api"
 ```

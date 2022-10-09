@@ -12,6 +12,9 @@ import (
 	"fybrik.io/vault-plugin-secrets-omd-reader/utils"
 )
 
+const FybrikAccessKeyString = "access_key"
+const FybrikSecretKeyString = "secret_key"
+
 type OMClient struct {
 }
 
@@ -27,9 +30,6 @@ func NewOMClient() *client.APIClient {
 
 	return client.NewAPIClient(&conf)
 }
-
-const FybrikAccessKeyString = "access_key"
-const FybrikSecretKeyString = "secret_key"
 
 type Config struct {
 	ConfigSource struct {

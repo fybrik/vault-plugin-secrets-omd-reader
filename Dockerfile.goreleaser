@@ -1,5 +1,0 @@
-FROM alpine:latest
-
-WORKDIR /
-COPY ./vault-plugin-secrets-omd-reader .
-USER 10001
