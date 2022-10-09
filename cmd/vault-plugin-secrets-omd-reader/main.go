@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/vault/api"
 	"github.com/hashicorp/vault/sdk/plugin"
 
-	omsecrets "fybrik.io/vault-plugin-secrets-omd-reader"
+	omsecrets "fybrik.io/vault-plugin-secrets-omd-reader/pkg/omsecrets"
 )
 
 func main() {
