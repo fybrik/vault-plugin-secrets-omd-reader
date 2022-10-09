@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/vault/sdk/framework"
 	"github.com/hashicorp/vault/sdk/logical"
 
-	omclient "fybrik.io/vault-plugin-secrets-omd-reader/openmetadata"
+	omclient "fybrik.io/vault-plugin-secrets-omd-reader/pkg/openmetadata"
 )
 
 // backend wraps the backend framework

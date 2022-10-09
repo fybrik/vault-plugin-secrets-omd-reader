@@ -6,8 +6,9 @@ package omsecrets
 import (
 	"context"
 
-	omclient "fybrik.io/vault-plugin-secrets-omd-reader/openmetadata"
 	"github.com/hashicorp/go-hclog"
+
+	omclient "fybrik.io/vault-plugin-secrets-omd-reader/pkg/openmetadata"
 )
 
 type OpenMetadataSecretsReader struct {

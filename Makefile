@@ -14,7 +14,7 @@ all: source-build
 
 .PHONY: source-build
 source-build:
-	CGO_ENABLED=0 GOOS="$(OS)" GOARCH="$(GOARCH)" go build -o vault/plugins/vault-plugin-secrets-omd-reader cmd/vault-plugin-secrets-omd-reader/main.go
+	CGO_ENABLED=0 GOOS="$(OS)" GOARCH="$(GOARCH)" go build -o vault/plugins/vault-plugin-secrets-omd-reader pkg/cmd/vault-plugin-secrets-omd-reader/main.go
 
 .PHONY: docker-build
 docker-build: source-build
