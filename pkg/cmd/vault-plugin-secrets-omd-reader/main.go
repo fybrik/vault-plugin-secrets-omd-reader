@@ -21,7 +21,7 @@ func main() {
 	// Please see https://www.hashicorp.com/blog/building-a-vault-secure-plugin for more info.
 	apiClientMeta := &api.PluginAPIClientMeta{}
 	flags := apiClientMeta.FlagSet()
-	err := flags.Parse(os.Args[1:]) //nolint
+	err := flags.Parse(os.Args[1:])
 	if err != nil {
 		logger := hclog.New(&hclog.LoggerOptions{})
 

@@ -9,7 +9,7 @@ import (
 
 	client "fybrik.io/openmetadata-connector/datacatalog-go-client"
 
-	"fybrik.io/vault-plugin-secrets-omd-reader/utils"
+	"fybrik.io/vault-plugin-secrets-omd-reader/pkg/utils"
 )
 
 const FybrikAccessKeyString = "access_key"
