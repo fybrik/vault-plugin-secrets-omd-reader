@@ -28,6 +28,13 @@ docker-push:
 enable:
 	vault secrets enable -path=omd-secrets-reader vault-plugin-secrets-omd-reader 
 
+.PHONY: check
+check:
+	go fmt ./...
+	go vet ./...
+	go mod tidy -compat=1.17
+	docker run --rm -v ${PWD}:/app -w /app golangci/golangci-lint:v1.50.0 golangci-lint run
+
 .PHONY: clean
 clean:
 	rm -f ./vault/plugins/vault-plugin-secrets-omd-reader
