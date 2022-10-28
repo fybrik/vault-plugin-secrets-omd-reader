@@ -21,7 +21,7 @@ func main() {
 	// Please see https://www.hashicorp.com/blog/building-a-vault-secure-plugin for more info.
 	apiClientMeta := &api.PluginAPIClientMeta{}
 	flags := apiClientMeta.FlagSet()
-	err := flags.Parse(os.Args[1:]) //nolint:revive //temporarily needed due to bug: https://github.com/golangci/golangci-lint/discussions/3286
+	err := flags.Parse(os.Args[1:])
 	if err != nil {
 		logger := hclog.New(&hclog.LoggerOptions{})
 
