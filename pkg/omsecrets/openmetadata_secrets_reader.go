@@ -17,7 +17,7 @@ type OpenMetadataSecretsReader struct {
 
 // GetSecret returns the content of openmetadata secret.
 func (s *OpenMetadataSecretsReader) GetSecret(ctx context.Context, secretName string, log hclog.Logger) (map[string]interface{}, error) {
-	databaseService, err := s.client.GetConnectionInformation(ctx, secretName)
+	databaseService, err := s.client.GetConnectionInformation(ctx, secretName, log)
 	if err != nil {
 		return nil, err
 	}

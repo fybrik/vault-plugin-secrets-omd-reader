@@ -3,7 +3,7 @@ module fybrik.io/vault-plugin-secrets-omd-reader
 go 1.17
 
 require (
-	fybrik.io/openmetadata-connector/datacatalog-go-client v0.0.0-00010101000000-000000000000
+	fybrik.io/openmetadata-connector/datacatalog-go-client v0.1.0
 	github.com/hashicorp/go-hclog v1.3.1
 	github.com/hashicorp/vault/api v1.8.0
 	github.com/hashicorp/vault/sdk v0.6.0
@@ -59,4 +59,4 @@ require (
 	gopkg.in/square/go-jose.v2 v2.5.1 // indirect
 )
 
-replace fybrik.io/openmetadata-connector/datacatalog-go-client => github.com/fybrik/openmetadata-connector/auto-generated/client v0.0.0-20220928091421-bc7556a9adbb
+replace fybrik.io/openmetadata-connector/datacatalog-go-client => github.com/fybrik/openmetadata-connector/auto-generated/client v0.0.0-20221027105301-9e424a992537
