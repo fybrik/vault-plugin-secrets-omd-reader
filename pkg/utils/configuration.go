@@ -18,16 +18,16 @@ const (
 )
 
 // GetEnvironmentVariables returns the OM server url, username, password
-func GetEnvironmentVariables() (string, string, string) {
-	url := os.Getenv(OMServerURL)
+func GetEnvironmentVariables() (url, username, password string) {
+	url = os.Getenv(OMServerURL)
 	if url == "" {
 		url = DefaultOMServerURL
 	}
-	username := os.Getenv(OMUsername)
+	username = os.Getenv(OMUsername)
 	if username == "" {
 		username = DefaultOMUsername
 	}
-	password := os.Getenv(OMPassword)
+	password = os.Getenv(OMPassword)
 	if password == "" {
 		password = DefaultOMPassword
 	}
