@@ -4,7 +4,7 @@ Plugin for HashiCorp Vault which reads credential secrets from OpenMetadata
 Requirements:
 
     make
-    golang 1.17 and above
+    golang 1.19 and above
     Vault CLI utility (tested on Vault version v1.11.3)
 
 ## Quick Start
