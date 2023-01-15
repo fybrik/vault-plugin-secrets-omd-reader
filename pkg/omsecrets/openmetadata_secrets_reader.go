@@ -30,7 +30,7 @@ func (s *OpenMetadataSecretsReader) GetSecret(ctx context.Context, secretName st
 	serviceType := databaseService.GetServiceType()
 	dt, found := nameToDatabaseStruct[serviceType]
 	if !found {
-		return nil, fmt.Errorf("Service type %s not recognized", serviceType)
+		return nil, fmt.Errorf("service type %s not recognized", serviceType)
 	}
 	config := databaseService.Connection.GetConfig()
 	return dt.ExtractSecretsFromConfig(config)
