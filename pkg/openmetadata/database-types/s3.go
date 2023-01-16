@@ -8,7 +8,7 @@ import "encoding/json"
 const FybrikAccessKeyString = "access_key"
 const FybrikSecretKeyString = "secret_key"
 
-type Config struct {
+type S3Config struct {
 	ConfigSource struct {
 		SecurityConfig struct {
 			AccessKey string `json:"awsAccessKeyId"`
@@ -21,7 +21,7 @@ type S3 struct {
 }
 
 func (s S3) ExtractSecretsFromConfig(config map[string]interface{}) (map[string]interface{}, error) {
-	var c Config
+	var c S3Config
 	configBytes, err := json.Marshal(config)
 	if err != nil {
 		return nil, err
