@@ -1,6 +1,6 @@
 module fybrik.io/vault-plugin-secrets-omd-reader
 
-go 1.17
+go 1.19
 
 require (
 	fybrik.io/openmetadata-connector/datacatalog-go-client v0.1.0
