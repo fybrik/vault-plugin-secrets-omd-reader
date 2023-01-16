@@ -5,11 +5,16 @@ package omsecrets
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/hashicorp/go-hclog"
 
 	omclient "fybrik.io/vault-plugin-secrets-omd-reader/pkg/openmetadata"
+	dbtypes "fybrik.io/vault-plugin-secrets-omd-reader/pkg/openmetadata/database-types"
 )
+
+const Datalake = "Datalake"
+const Mysql = "Mysql"
 
 type OpenMetadataSecretsReader struct {
 	client *omclient.OMClient
@@ -17,10 +22,20 @@ type OpenMetadataSecretsReader struct {
 
 // GetSecret returns the content of openmetadata secret.
 func (s *OpenMetadataSecretsReader) GetSecret(ctx context.Context, secretName string, log hclog.Logger) (map[string]interface{}, error) {
+	nameToDatabaseStruct := map[string]dbtypes.Databasetype{
+		Datalake: dbtypes.S3{},
+		Mysql:    dbtypes.Mysql{},
+	}
+
 	databaseService, err := s.client.GetConnectionInformation(ctx, secretName, log)
 	if err != nil {
 		return nil, err
 	}
+	serviceType := databaseService.GetServiceType()
+	dt, found := nameToDatabaseStruct[serviceType]
+	if !found {
+		return nil, fmt.Errorf("service type %s not recognized", serviceType)
+	}
 	config := databaseService.Connection.GetConfig()
-	return s.client.ExtractSecretsFromConfig(config)
+	return dt.ExtractSecretsFromConfig(config)
 }

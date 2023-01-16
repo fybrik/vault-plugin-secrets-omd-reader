@@ -5,7 +5,6 @@ package omclient
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 
 	client "fybrik.io/openmetadata-connector/datacatalog-go-client"
@@ -13,9 +12,6 @@ import (
 
 	"fybrik.io/vault-plugin-secrets-omd-reader/pkg/utils"
 )
-
-const FybrikAccessKeyString = "access_key"
-const FybrikSecretKeyString = "secret_key"
 
 type OMClient struct {
 }
@@ -42,32 +38,6 @@ func NewOMClient(ctx context.Context, logger hclog.Logger) (*client.APIClient, e
 	token := fmt.Sprintf("%s %s", tokenStruct.TokenType, tokenStruct.AccessToken)
 	conf.DefaultHeader = map[string]string{"Authorization": token}
 	return client.NewAPIClient(&conf), nil
-}
-
-type Config struct {
-	ConfigSource struct {
-		SecurityConfig struct {
-			AccessKey string `json:"awsAccessKeyId"`
-			SecretKey string `json:"awsSecretAccessKey"`
-		} `json:"securityConfig"`
-	} `json:"configSource"`
-}
-
-func (o *OMClient) ExtractSecretsFromConfig(config map[string]interface{}) (map[string]interface{}, error) {
-	var c Config
-	configBytes, err := json.Marshal(config)
-	if err != nil {
-		return nil, err
-	}
-	err = json.Unmarshal(configBytes, &c)
-	if err != nil {
-		return nil, err
-	}
-	securityConfig := c.ConfigSource.SecurityConfig
-	return map[string]interface{}{
-		FybrikAccessKeyString: securityConfig.AccessKey,
-		FybrikSecretKeyString: securityConfig.SecretKey,
-	}, nil
 }
 
 func (o *OMClient) GetConnectionInformation(ctx context.Context, connectionName string,
