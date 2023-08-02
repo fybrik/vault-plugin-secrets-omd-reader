@@ -7,12 +7,14 @@ import "encoding/json"
 
 const FybrikAccessKeyString = "access_key"
 const FybrikSecretKeyString = "secret_key"
+const FybrikSessionToken = "session_token"
 
 type S3Config struct {
 	ConfigSource struct {
 		SecurityConfig struct {
-			AccessKey string `json:"awsAccessKeyId"`
-			SecretKey string `json:"awsSecretAccessKey"`
+			AccessKey    string `json:"awsAccessKeyId"`
+			SecretKey    string `json:"awsSecretAccessKey"`
+			SessionToken string `json:"awsSessionToken"`
 		} `json:"securityConfig"`
 	} `json:"configSource"`
 }
@@ -34,5 +36,6 @@ func (s S3) ExtractSecretsFromConfig(config map[string]interface{}) (map[string]
 	return map[string]interface{}{
 		FybrikAccessKeyString: securityConfig.AccessKey,
 		FybrikSecretKeyString: securityConfig.SecretKey,
+		FybrikSessionToken:    securityConfig.SessionToken,
 	}, nil
 }

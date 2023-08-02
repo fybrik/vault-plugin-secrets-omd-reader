@@ -16,7 +16,7 @@ export OM_SERVER_URL="http://localhost:8585/api"
 
 Next, build the plugin binary and start the Vault dev server:
 ```
-make build
+make source-build
 vault server -dev -dev-root-token-id=root -dev-plugin-dir=./vault/plugins
 ```
 
